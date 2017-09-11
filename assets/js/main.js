@@ -32,7 +32,7 @@ const app = {
 		app.obtenerPosicion.click( app.obtPosicionActual );
 		app.confMapa = {
 			zoom: 5,
-			center: app.actualPosicion, //coordenadas en el  mapa
+			center: app.actualPosicion,
 			mapTypeControl: false,
 			zoomControl: false,
 			streetViewControl: false

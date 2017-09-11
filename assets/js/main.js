@@ -1,22 +1,20 @@
 const app = {
 	configuracion : {
-		mapa : undefined, //objeto de mi mapa
+		mapa : undefined, 
 		confMapa : undefined, 
 		container : undefined,
 
-		//posición actual de latitud y altitud
+		//actual posición de latitud y altitud
 		actualPosicion : {
 			lat : 0,
 			lng : 0
 		},
 		obtenerPosicion : undefined, //para obtener la posicion del boton
-		// botonCercaLugares : undefined
 	},
-	//funcion para inicializar la aplicación
+	// inicializamos la aplicación
 	init : function( confUsuario = {} ){
-		console.log('inicializo ')
 
-		//cambiando la posicion por defecto
+		//cambiando la posicion
 		app.actualPosicion = (confUsuario.actualPosicion == undefined) ? {
 			lat: -9.1191427,
 			lng: -77.0349046
@@ -30,14 +28,14 @@ const app = {
 	},
 	setup : function(){
 
-		app.container = document.getElementById("map"), 
+		app.container = document.getElementById("mapita"), 
 		app.obtenerPosicion.click( app.obtPosicionActual );
 		app.confMapa = {
-			zoom: 5, //nivel de profundidad
-			center: app.actualPosicion, //se mostrara las coordenadas en el  mapa
-			mapTypeControl: true,
-			zoomControl: true,
-			streetViewControl: true
+			zoom: 5,
+			center: app.actualPosicion, //coordenadas en el  mapa
+			mapTypeControl: false,
+			zoomControl: false,
+			streetViewControl: false
 		}
 
 		app.configuracion.mapa = new google.maps.Map( app.container, app.confMapa);
@@ -58,11 +56,11 @@ const app = {
 				mapita: app.configuracion.mapa
 			});
 
-			app.configuracion.mapa.setZoom(18);
+			app.configuracion.mapa.setZoom(16);
 			app.configuracion.mapa.setCenter( app.actualPosicion );
 		},
 		error : function(){
-			alert("no encontramos tu uvicacion");
+			alert("no encontramos tu ubicación");
 		}
 	},
 }
